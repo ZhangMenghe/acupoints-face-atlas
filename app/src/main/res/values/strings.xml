@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Acupoints Face Atlas</string>
+    <string name="pmodel_front_face_landmark">jit_test.pt</string>
+    <string name="asset_copy_folder">models</string>
+</resources>

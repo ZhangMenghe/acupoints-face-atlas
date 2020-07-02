@@ -1,0 +1,24 @@
+Executable : /home/eevee/Android/Sdk/cmake/3.10.2.4988404/bin/cmake
+arguments : 
+-H/home/eevee/Github/acupoints-face-atlas/app/src/main/cpp
+-DCMAKE_CXX_FLAGS=-std=c++14 -frtti -fexceptions -fopenmp -Wno-error=format-security
+-DCMAKE_BUILD_TYPE=Release
+-DCMAKE_TOOLCHAIN_FILE=/home/eevee/Android/Sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake
+-DANDROID_ABI=arm64-v8a
+-DANDROID_NDK=/home/eevee/Android/Sdk/ndk/20.0.5594570
+-DANDROID_PLATFORM=android-28
+-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a
+-DCMAKE_ANDROID_NDK=/home/eevee/Android/Sdk/ndk/20.0.5594570
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/eevee/Github/acupoints-face-atlas/app/build/intermediates/cmake/release/obj/arm64-v8a
+-DCMAKE_MAKE_PROGRAM=/home/eevee/Android/Sdk/cmake/3.10.2.4988404/bin/ninja
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_SYSTEM_VERSION=28
+-DANDROID_TOOLCHAIN=clang
+-DANDROID_STL=c++_shared
+-DDLIB_DIR=/home/eevee/Github/acupoints-face-atlas/third_party/dlib
+-B/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/release/arm64-v8a
+-GNinja
+jvmArgs : 
+
+Build command args:

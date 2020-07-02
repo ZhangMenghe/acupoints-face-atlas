@@ -1,0 +1,42 @@
+{
+  "stringTable": {
+    "0": "/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/debug/armeabi-v7a",
+    "1": "--target=armv7-none-linux-androideabi28 --gcc-toolchain=/home/eevee/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/eevee/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dnative_lib_EXPORTS -isystem /home/eevee/Github/acupoints-face-atlas/third_party/dlib/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -std=c++14 -frtti -fexceptions -fopenmp -Wno-error=format-security -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "/home/eevee/Android/Sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake",
+    "/home/eevee/Android/Sdk/ndk/20.0.5594570/build/cmake/platforms.cmake",
+    "/home/eevee/Github/acupoints-face-atlas/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/home/eevee/Android/Sdk/cmake/3.10.2.4988404/bin/ninja -C \"/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/debug/armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "/home/eevee/Android/Sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/debug/armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "native-lib-Debug-armeabi-v7a": {
+      "buildCommand": "/home/eevee/Android/Sdk/cmake/3.10.2.4988404/bin/ninja -C \"/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/debug/armeabi-v7a\" native-lib",
+      "buildType": "debug",
+      "toolchain": "3711440806",
+      "abi": "armeabi-v7a",
+      "artifactName": "native-lib",
+      "files": [
+        {
+          "src": "/home/eevee/Github/acupoints-face-atlas/app/src/main/cpp/JNIs/jni_interface.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "/home/eevee/Github/acupoints-face-atlas/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so"
+    }
+  },
+  "toolchains": {
+    "3711440806": {
+      "cppCompilerExecutable": "/home/eevee/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
