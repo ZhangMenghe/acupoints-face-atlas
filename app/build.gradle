@@ -19,11 +19,11 @@ android {
                 cppFlags "-std=c++14 -frtti -fexceptions -fopenmp -Wno-error=format-security "
                 arguments "-DANDROID_TOOLCHAIN=clang",
                         "-DANDROID_STL=c++_shared",
-                        "-DDLIB_DIR=${project.rootDir}/third_party/dlib"
+                        "-DTHIRD_PARTY_DIR=${project.rootDir}/third_party"
             }
         }
         ndk {
-            abiFilters "arm64-v8a","x86","armeabi-v7a","x86_64"
+            abiFilters "armeabi-v7a"
         }
     }
 
@@ -35,7 +35,8 @@ android {
     }
     sourceSets {
         main {
-            jniLibs.srcDirs = ["../third_party/dlib/lib"]
+            jniLibs.srcDirs = ["../third_party/dlib/lib",
+                               "../third_party/protobuf/lib",]
             proto.srcDirs = ["src/main/proto"]
         }
     }

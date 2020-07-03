@@ -46,6 +46,7 @@ public class MainActivity extends GLActivity
         implements DisplayManager.DisplayListener{
     // Used to load the 'native-lib' library on application startup.
     static {
+        System.loadLibrary("protobuf-lite");
         System.loadLibrary("native-lib");
     }
     final static String TAG = MainActivity.class.getSimpleName();

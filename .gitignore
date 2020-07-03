@@ -48,7 +48,4 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
-*/.externalNativeBuild/
-
-#Other data files
-*dicom-images*
+*/.externalNativeBuild
