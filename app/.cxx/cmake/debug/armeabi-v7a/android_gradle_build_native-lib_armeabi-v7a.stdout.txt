@@ -1,2 +1,0 @@
-ninja: Entering directory `/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/debug/armeabi-v7a'
-ninja: no work to do.

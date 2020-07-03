@@ -1,5 +1,0 @@
-# ninja log v5
-0	195	1593321965	CMakeFiles/native-lib.dir/JNIs/jni_interface.cpp.o	96f0fe453c6e64da
-196	213	1593321965	/home/eevee/Github/acupoints-face-atlas/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	ab29eb7be6d3ece8
-0	2734	1593322173	CMakeFiles/native-lib.dir/JNIs/jni_interface.cpp.o	96f0fe453c6e64da
-2734	2763	1593322173	/home/eevee/Github/acupoints-face-atlas/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	ab29eb7be6d3ece8

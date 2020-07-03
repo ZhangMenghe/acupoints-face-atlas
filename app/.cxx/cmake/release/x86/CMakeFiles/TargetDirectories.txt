@@ -1,3 +1,0 @@
-/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir
-/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir
-/home/eevee/Github/acupoints-face-atlas/app/.cxx/cmake/release/x86/CMakeFiles/native-lib.dir

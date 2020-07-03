@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 29
@@ -35,6 +36,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ["../third_party/dlib/lib"]
+            proto.srcDirs = ["src/main/proto"]
         }
     }
     externalNativeBuild {
@@ -48,11 +50,27 @@ android {
         targetCompatibility = 1.8
     }
 }
-
+//for proto java generation
+protobuf {
+    protoc { artifact = 'com.google.protobuf:protoc:3.10.0' }
+    plugins {
+        javalite { artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0" }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+            }
+        }
+    }
+}
 dependencies {
 //    pytorch
     implementation 'org.pytorch:pytorch_android:1.4.0'
     implementation 'org.pytorch:pytorch_android_torchvision:1.4.0'
+
+    //protobuf
+    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 
     // CameraX core library using the camera2 implementation
     def camerax_version = "1.0.0-beta06"
