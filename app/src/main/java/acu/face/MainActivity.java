@@ -42,6 +42,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import acu.face.Detection.ImageAnalyzerDlib;
+
 public class MainActivity extends GLActivity
         implements DisplayManager.DisplayListener{
     // Used to load the 'native-lib' library on application startup.
@@ -128,7 +130,6 @@ public class MainActivity extends GLActivity
 
     private void setupCameraX() {
         PreviewView previewView = findViewById(R.id.background_texture_view);
-
         ListenableFuture cameraProviderFuture =
                 ProcessCameraProvider.getInstance(this);
 
@@ -150,7 +151,7 @@ public class MainActivity extends GLActivity
 //                                .setTargetResolution(new Size(520, 520))
                                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                                 .build();
-                imageAnalysis.setAnalyzer(analyze_executor, new ImageAnalyzer(this));
+                imageAnalysis.setAnalyzer(analyze_executor, new ImageAnalyzerDlib(this));
                 // Choose the camera by requiring a lens facing
                 CameraSelector cameraSelector = new CameraSelector.Builder()
                         .requireLensFacing(CameraSelector.LENS_FACING_FRONT)

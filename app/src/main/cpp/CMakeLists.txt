@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.4.1)
 add_library(native-lib
         SHARED
         JNIs/jni_interface.cpp
+        JNIs/dlib_face_landmark.cpp
         proto/messages.pb.cc
         )
 

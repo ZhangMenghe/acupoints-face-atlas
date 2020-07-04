@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Acupoints Face Atlas</string>
-    <string name="pmodel_front_face_landmark">jit_test.pt</string>
     <string name="asset_copy_folder">models</string>
+    <string name="dlib_face_detector_68_file">shape_predictor_68_face_landmarks.dat</string>
 </resources>
