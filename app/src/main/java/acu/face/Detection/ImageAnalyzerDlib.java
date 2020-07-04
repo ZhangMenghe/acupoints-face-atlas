@@ -54,13 +54,13 @@ public class ImageAnalyzerDlib implements ImageAnalysis.Analyzer {
     public void analyze(@NonNull ImageProxy image) {
         Bitmap bm = previewView.getBitmap();
         if(bm == null) return;
-        Canvas canvas = new Canvas(bm);
 
         if(SCALE_MAT == null){
             SCALE_MAT = new Matrix();
             float scaleWidth = ((float) INPUT_TENSOR_WIDTH) / bm.getWidth();
             float scaleHeight = ((float) INPUT_TENSOR_HEIGHT) / bm.getHeight();
             SCALE_MAT.postScale(scaleWidth, scaleHeight);
+            Log.e(TAG, "====size: " +  bm.getWidth() + " " + bm.getHeight());
         }
         Bitmap bitmap = Bitmap.createBitmap(
                 bm, 0, 0, bm.getWidth(), bm.getHeight(), SCALE_MAT, false);

@@ -6,6 +6,7 @@ using namespace acuf;
 #include <dlib/image_processing.h>
 #include <dlib/image_io.h>
 #include <proto/messages.pb.h>
+#include <detector/DLibFace68.h>
 using namespace acu;
 namespace {
     dlib::shape_predictor sFaceLandmarksDetector;

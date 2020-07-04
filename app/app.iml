@@ -35,6 +35,7 @@
     <output-test url="file://$MODULE_DIR$/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/cpp/JNIs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/cpp/proto" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/proto/debug/javalite" isTestSource="false" generated="true" />
@@ -99,7 +100,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/cpp" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.cxx" />
       <excludeFolder url="file://$MODULE_DIR$/.externalNativeBuild" />
       <excludeFolder url="file://$MODULE_DIR$/build" />

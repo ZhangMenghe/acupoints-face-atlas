@@ -42,7 +42,7 @@ public class GLActivity extends AppCompatActivity {
         checkPermissions();
         setupSurfaceView();
         JNIInterface.assetManager = getAssets();
-//        nativeAddr = JNIInterface.JNIonCreate(JNIInterface.assetManager);
+        nativeAddr = JNIInterface.JNIonCreate(JNIInterface.assetManager);
         setupTouchDetector();
     }
     protected void checkPermissions(){}
@@ -50,15 +50,22 @@ public class GLActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         surfaceView.onResume();
+        JNIInterface.JNIonResume(getApplicationContext(), this);
     }
     @Override
     protected void onPause(){
         super.onPause();
         surfaceView.onPause();
+        JNIInterface.JNIonPause();
     }
     @Override
     public void onDestroy(){
         super.onDestroy();
+        // Synchronized to avoid racing onDrawFrame.
+        synchronized (this) {
+            JNIInterface.JNIonDestroy();
+            nativeAddr = 0;
+        }
     }
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -113,7 +120,7 @@ public class GLActivity extends AppCompatActivity {
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
             if(setupResource()){
-//                JNIInterface.JNIonGlSurfaceCreated();
+                JNIInterface.JNIonGLSurfaceCreated();
             }
         }
 
@@ -128,18 +135,18 @@ public class GLActivity extends AppCompatActivity {
         public void onDrawFrame(GL10 gl) {
             // Synchronized to avoid racing onDestroy.
             updateOnFrame();
-//            synchronized (this) {
-//                if (nativeAddr == 0) {
-//                    return;
-//                }
-//                if (viewportChanged) {
-//                    int displayRotation = getWindowManager().getDefaultDisplay().getRotation();
-//                    JNIInterface.JNIonSurfaceChanged(displayRotation, viewportWidth, viewportHeight);
-//                    viewportChanged = false;
-//                }
-//                JNIInterface.JNIdrawFrame();
-//                updateOnFrame();
-//            }
+            synchronized (this) {
+                if (nativeAddr == 0) {
+                    return;
+                }
+                if (viewportChanged) {
+                    int displayRotation = getWindowManager().getDefaultDisplay().getRotation();
+                    JNIInterface.JNIonSurfaceChanged(displayRotation, viewportWidth, viewportHeight);
+                    viewportChanged = false;
+                }
+                JNIInterface.JNIdrawFrame();
+                updateOnFrame();
+            }
         }
     }
 }

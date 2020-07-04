@@ -54,17 +54,14 @@ public class MainActivity extends GLActivity
     final static String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_CODE_CAMERA_PERMISSION = 200;
     private static final String[] PERMISSIONS = {Manifest.permission.CAMERA};
-    private static final int RES_WIDTH = 540;
 
-    protected HandlerThread mBackgroundThread;
-    protected Handler mBackgroundHandler;
     private ImageCapture imageCapture;
     private ImageAnalysis imageAnalysis;
     private Executor analyze_executor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startBackgroundThread();
+//        startBackgroundThread();
         analyze_executor = Executors.newSingleThreadExecutor();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -76,21 +73,9 @@ public class MainActivity extends GLActivity
             setupCameraX();
         }
     }
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        startBackgroundThread();
-//    }
-
-    protected void startBackgroundThread() {
-        mBackgroundThread = new HandlerThread("ModuleActivity");
-        mBackgroundThread.start();
-        mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
-    }
     @Override
     protected void onResume() {
         super.onResume();
-        surfaceView.onResume();
         getSystemService(DisplayManager.class).registerDisplayListener(this, null);
     }
     @Override
@@ -98,26 +83,6 @@ public class MainActivity extends GLActivity
         super.onPause();
         getSystemService(DisplayManager.class).unregisterDisplayListener(this);
     }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-
-        mBackgroundThread.quitSafely();
-        try {
-            mBackgroundThread.join();
-            mBackgroundThread = null;
-            mBackgroundHandler = null;
-        } catch (InterruptedException e) {
-            Log.e(TAG, "Error on stopping background thread", e);
-        }
-
-        // Synchronized to avoid racing onDrawFrame.
-        synchronized (this) {
-//            JNIInterface.JNIonDestroy();
-            nativeAddr = 0;
-        }
-    }
-
     @Override
     protected void updateOnFrame(){
         super.updateOnFrame();
@@ -175,53 +140,7 @@ public class MainActivity extends GLActivity
             }
         }, ContextCompat.getMainExecutor(this));
     }
-//    @Override
-//    protected void checkPermissions(){
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(
-//                    this,
-//                    PERMISSIONS,
-//                    REQUEST_CODE_CAMERA_PERMISSION);
-//        } else {
-//            setupCameraX();
-//        }
-//    }
 
-//    private void setupCameraX() {
-//        final TextureView textureView = findViewById(R.id.background_texture_view);
-//        final PreviewConfig previewConfig = new PreviewConfig.Builder().
-//                build();
-//        final Preview preview = new Preview(previewConfig);
-//
-//        preview.setOnPreviewOutputUpdateListener(output -> textureView.setSurfaceTexture(output.getSurfaceTexture()));
-//
-////        int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-////        int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-////        int res_height = (int)((float)RES_WIDTH / width * height);
-////        Log.e(TAG, "====setupCameraX: " + RES_WIDTH +"  " + res_height   );
-//
-//        final ImageAnalysisConfig imageAnalysisConfig =
-//                new ImageAnalysisConfig.Builder()
-//                        .setCallbackHandler(mBackgroundHandler)
-//                        .setImageReaderMode(ImageAnalysis.ImageReaderMode.ACQUIRE_LATEST_IMAGE)
-//                        .build();
-//        final ImageAnalysis imageAnalysis = new ImageAnalysis(imageAnalysisConfig);
-//        imageAnalysis.setAnalyzer(
-//                (image, rotationDegrees) -> {
-////                    if (SystemClock.elapsedRealtime() - mLastAnalysisResultTime < 500) {
-////                        return;
-////                    }
-//
-////                    final R result = analyzeImage(image, rotationDegrees);
-////                    if (result != null) {
-////                        mLastAnalysisResultTime = SystemClock.elapsedRealtime();
-////                        runOnUiThread(() -> applyToUiAnalyzeImageResult(result));
-////                    }
-//                });
-//
-//        CameraX.bindToLifecycle(this, preview, imageAnalysis);
-//    }
     @Override
     public void onRequestPermissionsResult(
             int requestCode, String[] permissions, int[] grantResults) {
